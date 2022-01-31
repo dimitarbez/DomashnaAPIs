@@ -60,12 +60,13 @@ router.get('/gateway/:id', (req, res) => {
             res.json({
                 status: 500
             })
-		}
+		} else {
 
-		res.json({
-            status: 200,
-            gateway: foundGateway
-        })
+            res.json({
+                status: 200,
+                gateway: foundGateway
+            })
+        }
     })
 })
 
@@ -76,11 +77,11 @@ router.put('/gateway/:id', (req, res) => {
             res.json({
                 status: 500
             })
-		}
-
-		res.json({
-            status: 200
-        })
+		} else {   
+            res.json({
+                status: 200
+            })
+        }
 	})
 })
 
@@ -91,11 +92,11 @@ router.delete('/gateway/:id', (req, res) => {
             res.json({
                 status: 500
             })
-		}
-
-		res.json({
-            status: 200
-        })
+		} else {
+            res.json({
+                status: 200
+            })
+        }
 	})
 })
 
