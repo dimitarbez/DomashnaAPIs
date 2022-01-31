@@ -33,8 +33,22 @@ router.post('/gateway', (req, res) => {
 })
 
 router.get('/gateway', (req, res) => {
+
+    console.log('test')
+
 	LoraGateway.find({}, (err, gateways) => {
-		res.json(gateways)
+
+        if (err) {
+            res.json({
+                status: 500
+            })
+		}
+
+		res.json({
+            status: 200,
+            gateways: gateways
+        })
+        
 	})
 })
 

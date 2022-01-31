@@ -15,25 +15,18 @@ mongoose
 		console.log(err)
 	})
 
-app.use(
-	require('express-session')({
-		secret: 'Zivio je drug tito!',
-		resave: false,
-		saveUninitialized: false
-	})
-)
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
 
-let gatewayRoutes = require('./models/gateway')
+let gatewayRoutes = require('./routes/gateways')
 
 app.use(gatewayRoutes)
 
 app.get('*', (req, res) => {
-	req.flash('error', 'Route not found!')
-	res.redirect('/')
+	res.send({
+        status: 404
+    })
 })
 
 app.listen(process.env.PORT || 3000, () => {
